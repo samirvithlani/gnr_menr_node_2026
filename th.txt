@@ -1,0 +1,13 @@
+MERN:
+mongo express recat node
+
+nodejs: js run time env
+express is middleware framework which is built top on node js\
+
+
+import export
+
+app.js | index.js | main.js | server.js
+
+require(""):  coommon
+import : es6 
