@@ -41,6 +41,51 @@ app.get("/users",(req,res)=>{
 })
 
 
+//params:
+
+//localhost:3000/student/101 : valid
+//http://localhost:3000/student : not valid
+//http://localhost:3000/student/101/102 : not valid
+// app.get("/student/:id",(req,res)=>{
+//     console.log("params",req.params)
+//     console.log("id = ",req.params.id)
+
+//     res.json({
+//         message:"student fetched..",
+//         id:req.params.id
+//     })
+
+// })
+
+const students = [
+    {id:1,name:"raj",marks:23},
+    {id:2,name:"kunal",marks:24},
+    {id:3,name:"parth",marks:25},
+    {id:4,name:"jay",marks:20},
+]
+
+//localhost:3000/student/101
+app.get("/student/:id",(req,res)=>{
+
+    const foundStudent = students.find((stu)=>stu.id == req.params.id)
+    if(foundStudent){
+        res.json({
+            message:"student found",
+            data:foundStudent
+        })
+    }else{
+        res.json({
+            message:"student not found",
+            
+        })
+    }
+
+})
+
+
+
+
+
 const PORT = 3000;
 
 //server creation.

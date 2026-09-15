@@ -90,3 +90,26 @@ DELETE:
 
 browser only support get api
 
+
+
+req object data:
+req.params
+----------
+url:localhost:3000/user/:id
+   :localhost:3000/user/101
+   :req.params.id
+
+getById
+
+req.query
+---------
+url:localhost:3000/user?name=amit
+    localhost:3000/user?name=amit&age=23&city=Ahmedbad
+    req.query.name
+    req.query.age
+
+search
+
+req.headers
+req.body
+
