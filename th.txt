@@ -71,3 +71,22 @@ sudo npm i nodemon -g
 
 ------------------------>
 nodemon app.js
+
+as fe dev we are counsumer
+as be deve we are producers of api
+
+2 type:
+soap: xml response
+rest: json response
+
+GET:
+ datbase  --> data ---> frontend
+POST:
+    frontend -->data -->backend -->db
+PUT :
+    update
+DELETE:
+    delete
+
+browser only support get api
+
