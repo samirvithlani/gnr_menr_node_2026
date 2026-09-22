@@ -1,8 +1,12 @@
-const getAllUsers = (req,res)=>{
+const userModel = require("../models/UserModel")
 
+const getAllUsers = async(req,res)=>{
+
+    const users = await userModel.find() //[]
     
     res.json({
-        message:"user fetched"
+        message:"user fetched",
+        data:users
     })
 
 }
