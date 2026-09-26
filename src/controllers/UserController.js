@@ -29,7 +29,20 @@ const getUserById = async (req, res) => {
   }
 };
 
+const createUser = async(req,res)=>{
+
+  //db.users.insertOne({name:"raj",age:23})
+  //userModel.insertOne(req.body)
+  const savedUser = await userModel.insertOne(req.body)
+  console.log("req.body...",req.body)
+  res.json({
+    message:"user saved.",
+    data:savedUser
+  })
+}
+
 module.exports = {
   getAllUsers,
   getUserById,
+  createUser
 };

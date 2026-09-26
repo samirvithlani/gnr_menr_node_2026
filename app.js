@@ -1,6 +1,7 @@
 const express = require("express");
 //refereance variable crearte..
 const app = express();
+app.use(express.json()) //gloabl middleware..
 
 const DbConnection  = require("./src/utils/DBConnection")
 DbConnection()
