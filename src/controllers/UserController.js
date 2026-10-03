@@ -41,8 +41,39 @@ const createUser = async(req,res)=>{
   })
 }
 
+const deleteUser = async(req,res)=>{
+
+  //db.users.deleteOne({_id:"suihasou9009asjsan"})
+  //userModel.deleteOne({_id:"suihasou9009asjsan"})
+  const id = req.params.id
+
+  try{
+    const userAfterDelete = await userModel.findByIdAndDelete(id)
+    if(userAfterDelete){
+      res.json({
+        message:"user deleted"
+      })
+    }
+    else{
+      res.json({
+        message:"user not found to delete"
+      })
+    }
+
+  }catch(err){
+    res.json({
+      message:"error while deleting user !!",
+      err:err
+    })
+  }
+
+
+
+}
+
 module.exports = {
   getAllUsers,
   getUserById,
-  createUser
+  createUser,
+  deleteUser
 };
