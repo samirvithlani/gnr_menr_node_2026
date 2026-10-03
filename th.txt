@@ -231,3 +231,15 @@ object realtional mapping:
 
 db --> users --> userModel
 
+
+
+addNewHobby:
+
+req.params.id
+req.body.hobby
+
+userModel.findByIdAndUpdate(id,{$push:{hobbies:req.body.hobby}},{new:true})
+
+userModel.findByIdAndUpdate(id,{$pull:{hobbies:req.body.hobby}},{new:true})
+
+
