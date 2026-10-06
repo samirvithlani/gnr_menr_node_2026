@@ -20,6 +20,9 @@ const userModel = new Schema({
     hobbies:[{
         type:String
     }],
+    password:{
+        type:String
+    },
     status:{
         type:Boolean,
         default:true

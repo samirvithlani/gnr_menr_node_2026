@@ -1,4 +1,5 @@
 const userModel = require("../models/UserModel");
+const sendMail = require("../utils/MailUtil")
 
 const getAllUsers = async (req, res) => {
   const users = await userModel.find(); //[]
@@ -32,6 +33,7 @@ const createUser = async (req, res) => {
   //db.users.insertOne({name:"raj",age:23})
   //userModel.insertOne(req.body)
   const savedUser = await userModel.insertOne(req.body);
+  await sendMail(savedUser.email,"welcome mail",`Hello ${savedUser?.name} Welcome to circus`)
   console.log("req.body...", req.body);
   res.json({
     message: "user saved.",

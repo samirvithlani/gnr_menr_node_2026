@@ -243,3 +243,8 @@ userModel.findByIdAndUpdate(id,{$push:{hobbies:req.body.hobby}},{new:true})
 userModel.findByIdAndUpdate(id,{$pull:{hobbies:req.body.hobby}},{new:true})
 
 
+nodemailer
+
+npm i nodemailer
+
+npm i dotenv
