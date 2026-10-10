@@ -248,3 +248,5 @@ nodemailer
 npm i nodemailer
 
 npm i dotenv
+
+npm i zod
