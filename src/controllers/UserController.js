@@ -32,8 +32,9 @@ const getUserById = async (req, res) => {
 const createUser = async (req, res) => {
   //db.users.insertOne({name:"raj",age:23})
   //userModel.insertOne(req.body)
+  //validation..
   const savedUser = await userModel.insertOne(req.body);
-  await sendMail(savedUser.email,"welcome mail",`Hello ${savedUser?.name} Welcome to circus`)
+  //await sendMail(savedUser.email,"welcome mail",`Hello ${savedUser?.name} Welcome to circus`)
   console.log("req.body...", req.body);
   res.json({
     message: "user saved.",
