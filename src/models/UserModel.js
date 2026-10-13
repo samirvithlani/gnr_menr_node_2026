@@ -26,6 +26,9 @@ const userModel = new Schema({
     status:{
         type:Boolean,
         default:true
+    },
+    profilePicUrl:{
+        type:String
     }
 })
 

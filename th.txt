@@ -250,3 +250,32 @@ npm i nodemailer
 npm i dotenv
 
 npm i zod
+
+--->
+file uploading:
+copy file from  1 location to other location programmtically
+
+1)server   : path db store    :realtive costly
+2)cloud    : path db store    :cheape s3/blob storage.
+3)database :                  :costy
+
+
+user reg: user profile pic:
+
+user obj -->db -- > ++ {file path}
+
+
+
+multer
+npm i multer
+
+
+postman / react / ...fe : data type json -->
+file can not bind in json --> formData
+
+/createuser POST:
+
+insert logic: beofre this file uplaod ---> server
+middleware
+
+

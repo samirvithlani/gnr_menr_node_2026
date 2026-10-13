@@ -33,7 +33,10 @@ const createUser = async (req, res) => {
   //db.users.insertOne({name:"raj",age:23})
   //userModel.insertOne(req.body)
   //validation..
-  const savedUser = await userModel.insertOne(req.body);
+  //file object..
+  console.log("file...",req.file) //it will fill only file is uploaded..
+  //const savedUser = await userModel.insertOne(req.body);
+  const savedUser = await userModel.insertOne({...req.body,profilePicUrl:req.file.path});
   //await sendMail(savedUser.email,"welcome mail",`Hello ${savedUser?.name} Welcome to circus`)
   console.log("req.body...", req.body);
   res.json({
