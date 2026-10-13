@@ -1,39 +1,40 @@
-const mongoose = require("mongoose")
-const Schema = mongoose.Schema // class --> object..
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema; // class --> object..
 
 const userModel = new Schema({
-    //fileds
-    name:{
-        type:String
+  //fileds
+  name: {
+    type: String,
+  },
+  age: {
+    type: Number,
+  },
+  bloodGroup: {
+    type: String,
+    enum: ["A+", "A-", "B+", "B-"],
+  },
+  email: {
+    type: String,
+    unique: true,
+  },
+  hobbies: [
+    {
+      type: String,
     },
-    age:{
-        type:Number
-    },
-    bloodGroup:{
-        type:String,
-        enum:["A+","A-","B+","B-"]
-    },
-    email:{
-        type:String,
-        unique:true
-    },
-    hobbies:[{
-        type:String
-    }],
-    password:{
-        type:String
-    },
-    status:{
-        type:Boolean,
-        default:true
-    },
-    profilePicUrl:{
-        type:String
-    }
-})
-
+  ],
+  password: {
+    type: String,
+  },
+  status: {
+    type: Boolean,
+    default: true,
+  },
+  profilePicUrl: {
+    type: String,
+  },
+  thumbnails: [{ type: String }],
+});
 
 //db.users.find()
 //userModel.find()
-module.exports = mongoose.model("users",userModel)
-
+module.exports = mongoose.model("users", userModel);

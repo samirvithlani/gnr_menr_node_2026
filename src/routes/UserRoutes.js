@@ -17,6 +17,7 @@ router.get("/user/:id",userController.getUserById)
 //router.post("/user",validationMiddleware(userValidationSchema),userController.createUser)
 
 router.post("/user",uplaod.single("file"),userController.createUser)
+router.post("/userm",uplaod.array("file",3),userController.createUserWithMultipuleFile)
 router.delete("/user/:id",userController.deleteUser)
 router.put("/user/:id",userController.updateUser)
 //router.put("/addhobby/:id",userController.updateUser)

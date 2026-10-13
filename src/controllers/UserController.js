@@ -45,6 +45,22 @@ const createUser = async (req, res) => {
   });
 };
 
+const createUserWithMultipuleFile = async (req, res) => {
+  //db.users.insertOne({name:"raj",age:23})
+  //userModel.insertOne(req.body)
+  //validation..
+  //file object..
+  console.log("files...",req.files) //it will fill only file is uploaded..
+  //const savedUser = await userModel.insertOne(req.body);
+  const savedUser = await userModel.insertOne({...req.body,profilePicUrl:req.files[0].path});
+  //await sendMail(savedUser.email,"welcome mail",`Hello ${savedUser?.name} Welcome to circus`)
+  console.log("req.body...", req.body);
+  res.json({
+    message: "user saved.",
+    data: savedUser,
+  });
+};
+
 const deleteUser = async (req, res) => {
   //db.users.deleteOne({_id:"suihasou9009asjsan"})
   //userModel.deleteOne({_id:"suihasou9009asjsan"})
@@ -100,5 +116,6 @@ module.exports = {
   getUserById,
   createUser,
   deleteUser,
-  updateUser
+  updateUser,
+  createUserWithMultipuleFile
 };
