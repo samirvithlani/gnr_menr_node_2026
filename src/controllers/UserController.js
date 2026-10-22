@@ -1,5 +1,6 @@
 const userModel = require("../models/UserModel");
 const sendMail = require("../utils/MailUtil")
+const uploadtoCloud = require("../utils/CloudinaryUtil")
 
 const getAllUsers = async (req, res) => {
   const users = await userModel.find(); //[]
@@ -36,7 +37,9 @@ const createUser = async (req, res) => {
   //file object..
   console.log("file...",req.file) //it will fill only file is uploaded..
   //const savedUser = await userModel.insertOne(req.body);
-  const savedUser = await userModel.insertOne({...req.body,profilePicUrl:req.file.path});
+  const cloudinaryResponse = await uploadtoCloud(req.file.path) //{////}
+  console.log("cloudResponse..",cloudinaryResponse)
+  const savedUser = await userModel.insertOne({...req.body,profilePicUrl:cloudinaryResponse.secure_url});
   //await sendMail(savedUser.email,"welcome mail",`Hello ${savedUser?.name} Welcome to circus`)
   console.log("req.body...", req.body);
   res.json({
