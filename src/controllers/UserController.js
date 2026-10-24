@@ -39,6 +39,8 @@ const createUser = async (req, res) => {
   //const savedUser = await userModel.insertOne(req.body);
   const cloudinaryResponse = await uploadtoCloud(req.file.path) //{////}
   console.log("cloudResponse..",cloudinaryResponse)
+  //password hash logic..
+
   const savedUser = await userModel.insertOne({...req.body,profilePicUrl:cloudinaryResponse.secure_url});
   //await sendMail(savedUser.email,"welcome mail",`Hello ${savedUser?.name} Welcome to circus`)
   console.log("req.body...", req.body);

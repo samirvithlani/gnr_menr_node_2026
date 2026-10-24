@@ -279,3 +279,63 @@ insert logic: beofre this file uplaod ---> server
 middleware
 
 
+auhentication:
+authorization:
+
+bcrypt:
+crypto:
+
+npm i bcrypt:
+
+
+
+login:POST
+
+req.body.email
+req.body.password
+
+req.body.password:plain -->db password :hashpassword
+
+findUserByemail: object.password --> hashpassword
+if(foundUserFromEmail){}
+compreSync(req.body.password,foundUserFromEmail.password)
+
+
+<------------------------------------------------------>
+
+token start:
+JWT token:
+json web token:
+
+
+login ---> object expose..
+
+token: ---? please use this token for what??
+
+1st step:
+loginApi: -->token
+
+jsonwebtoken :::-->data feed -->
+loggedinuser data -->
+
+const foundUser = await userModel.findOne({emial:email})
+
+if(passwordMacth){
+
+    token genderation logic:
+    res.json({
+        //data:foundUser
+        token:token
+    })
+
+}
+
+
+token genderation logic:
+npm i jsonwebtoken
+
+const jwt =require("jwt")
+secret = "royal"
+
+//const token = jwt.sign(object,secret)
+const token = jwt.sign(foundUser.toObject(),secret)
