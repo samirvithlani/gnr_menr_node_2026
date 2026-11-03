@@ -1,6 +1,9 @@
 const userModel = require("../models/UserModel");
 const sendMail = require("../utils/MailUtil")
 const uploadtoCloud = require("../utils/CloudinaryUtil")
+const bcrypt = require("bcrypt")
+const secrect = "royal"
+const jwt = require("jsonwebtoken")
 
 const getAllUsers = async (req, res) => {
   const users = await userModel.find(); //[]
@@ -41,7 +44,8 @@ const createUser = async (req, res) => {
   console.log("cloudResponse..",cloudinaryResponse)
   //password hash logic..
 
-  const savedUser = await userModel.insertOne({...req.body,profilePicUrl:cloudinaryResponse.secure_url});
+  const hashedPassword = bcrypt.hashSync(req.body.password,12)
+  const savedUser = await userModel.insertOne({...req.body,password:hashedPassword,profilePicUrl:cloudinaryResponse.secure_url});
   //await sendMail(savedUser.email,"welcome mail",`Hello ${savedUser?.name} Welcome to circus`)
   console.log("req.body...", req.body);
   res.json({
@@ -116,11 +120,52 @@ const updateUser = async (req, res) => {
   }
 };
 
+// login api
+const loginUser = async(req,res) =>{
+    try{
+    const mail = req.body.email;
+    const founduser = await userModel.findOne({email:mail});
+    
+    console.log(req.body.password)
+    if(!founduser)
+    {
+        return res.json({
+            message:"user not found"
+        });
+    }
+    const result = bcrypt.compareSync(req.body.password,founduser.password);
+    if(result)
+    {
+        // const token = jwt.sign(founduser.toObject(),secrect)
+        const token = jwt.sign({id:founduser._id},secrect,{expiresIn:'1d'})
+        res.json({
+            token : token,
+            message:"logged in"
+        });
+    }
+    else
+    {
+        res.json({
+            message:"wrong password"
+        });
+    }
+    }
+    catch(err)
+    {
+      console.log(err)
+        res.json({
+            message : "something went wrong",
+            error : err
+        })
+    }
+}
+
 module.exports = {
   getAllUsers,
   getUserById,
   createUser,
   deleteUser,
   updateUser,
-  createUserWithMultipuleFile
+  createUserWithMultipuleFile,
+  loginUser
 };
