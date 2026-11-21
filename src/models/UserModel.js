@@ -33,6 +33,9 @@ const userModel = new Schema({
     type: String,
   },
   thumbnails: [{ type: String }],
+  refreshToken:{
+    type:String
+  }
 });
 
 //db.users.find()

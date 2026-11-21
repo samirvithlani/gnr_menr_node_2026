@@ -339,3 +339,8 @@ secret = "royal"
 
 //const token = jwt.sign(object,secret)
 const token = jwt.sign(foundUser.toObject(),secret)
+
+
+2 type of token:
+access token: every api call.., short lived token
+refresh token:6 month 

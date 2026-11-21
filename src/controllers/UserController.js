@@ -46,6 +46,9 @@ const createUser = async (req, res) => {
 
   const hashedPassword = bcrypt.hashSync(req.body.password,12)
   const savedUser = await userModel.insertOne({...req.body,password:hashedPassword,profilePicUrl:cloudinaryResponse.secure_url});
+  console.log(savedUser)
+  const token = jwt.sign({id:savedUser._id},secrect,{expiresIn:'1d'})
+  await userModel.findByIdAndUpdate(savedUser._id,{refreshToken:token})
   //await sendMail(savedUser.email,"welcome mail",`Hello ${savedUser?.name} Welcome to circus`)
   console.log("req.body...", req.body);
   res.json({
@@ -158,6 +161,14 @@ const loginUser = async(req,res) =>{
             error : err
         })
     }
+}
+
+//POST:
+const getAccessToken = async(req,res)=>{
+  const refreshToken = req.body.refreshToken;
+  const foundUser = await userModel.findOne({refreshToken:refreshToken})
+  const token = jwt.sign({id:founduser._id},secrect,{expiresIn:'1d'})
+
 }
 
 module.exports = {

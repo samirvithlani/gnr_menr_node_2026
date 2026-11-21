@@ -26,8 +26,10 @@ const authMiddleware = (req,res,next)=>{
     //now verify blind token with jwt..
     try{
 
-        const decoded = jwt.verify(token,secret)
+        const decoded = jwt.verify(token,secret) //{id:""}
         //db layer..
+        //const founduser = await userModel.findById(decoded.id)
+        //if foundUser //else res.json --> invalid token
         console.log("decoded token = ",decoded)
         next()
     
