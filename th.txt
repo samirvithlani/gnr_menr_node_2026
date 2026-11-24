@@ -344,3 +344,18 @@ const token = jwt.sign(foundUser.toObject(),secret)
 2 type of token:
 access token: every api call.., short lived token
 refresh token:6 month 
+
+
+
+forgot password:
+reset password:
+
+
+forgotpassword click: email ---> mail
+POST: req.body.email
+ verify --> db-->
+ foundUser --->token
+ link:
+ var token = jwt.sign
+ http://localhost:3000/resetpassword?token=token
+ //www.royaltehsoft/resetpassword?token=token not now:

@@ -23,4 +23,5 @@ router.delete("/user/:id",userController.deleteUser)
 router.put("/user/:id",userController.updateUser)
 //router.put("/addhobby/:id",userController.updateUser)
 router.post("/login",userController.loginUser)
+
 module.exports = router
