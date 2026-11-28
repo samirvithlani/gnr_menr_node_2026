@@ -359,3 +359,27 @@ POST: req.body.email
  var token = jwt.sign
  http://localhost:3000/resetpassword?token=token
  //www.royaltehsoft/resetpassword?token=token not now:
+
+
+
+* * * * *
+min
+ hour
+   day
+     month
+        weekday
+
+* * * * *
+
+npm i node-cron
+
+
+insert recordt at 10 seconds
+
+random no
+sattus:pending:
+
+
+5 min cron:
+pending:
+complate
